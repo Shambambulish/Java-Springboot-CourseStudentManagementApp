@@ -28,6 +28,7 @@ class StudentServiceClass implements StudentService{
         students.forEach(student -> {
             System.out.println(student.GetFirstName());
         });
+        //Save updated information to file
         DemoApplication.fileService.SaveStudentData();
     }
 
@@ -62,6 +63,7 @@ class StudentServiceClass implements StudentService{
         }else {
             System.out.println("Student with this ID doesn't exist.");
         }
+        //Save updated information to file
         DemoApplication.fileService.SaveStudentData();
     }
     

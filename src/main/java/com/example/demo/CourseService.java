@@ -32,10 +32,10 @@ class CourseServiceClass implements CourseService {
     public void CreateOnlineCourse(String name, String teacher, int maxParticipants, int credit, String startDate, String endDate, String description, String remoteSessionLink) {
         courses.add(new OnlineCourse(CreateCourseID(), name, teacher, maxParticipants, credit, startDate, endDate, description, remoteSessionLink));
         System.out.println("Added course");
+        //Save updated information to file
         try{
             DemoApplication.fileService.SaveCourseData();
         } catch (IOException err){
-            System.out.println("IOException I guess");
             err.printStackTrace();
         }
     }
@@ -44,10 +44,10 @@ class CourseServiceClass implements CourseService {
     public void CreateClassRoomCourse(String name, String teacher, int maxParticipants, int credit, String startDate, String endDate, String description, String classRoomID) {
         courses.add(new ClassRoomCourse(CreateCourseID(), name, teacher, maxParticipants, credit, startDate, endDate, description, classRoomID));
         System.out.println("Added course");
+        //Save updated information to file
         try{
             DemoApplication.fileService.SaveCourseData();
         } catch (IOException err){
-            System.out.println("IOException I guess");
             err.printStackTrace();
         }
     }
@@ -83,10 +83,10 @@ class CourseServiceClass implements CourseService {
             ClassRoomCourse crc = (ClassRoomCourse) c;
             crc.EditCourse(id, name, teacher, maxParticipants, credit, startDate, endDate, description, classRoomID, crc.GetParticipants());
         }
+        //Save updated information to file
         try{
             DemoApplication.fileService.SaveCourseData();
         } catch (IOException err){
-            System.out.println("IOException I guess");
             err.printStackTrace();
         }
     }
@@ -100,10 +100,10 @@ class CourseServiceClass implements CourseService {
         else {
             System.out.println("Course with this ID doesn't exist in CourseService courses.");
         }
+        //Save updated information to file
         try{
             DemoApplication.fileService.SaveCourseData();
         } catch (IOException err){
-            System.out.println("IOException I guess");
             err.printStackTrace();
         }
     }
@@ -127,10 +127,10 @@ class CourseServiceClass implements CourseService {
         List<Student> courseParticipants = course.GetParticipants();
         if (courseParticipants.contains(student)){System.out.println("Student already on course"); return;}
         course.AddToParticipants(student);
+        //Save updated information to file
         try{
             DemoApplication.fileService.SaveCourseData();
         } catch (IOException err){
-            System.out.println("IOException I guess");
             err.printStackTrace();
         }
     }
@@ -143,10 +143,10 @@ class CourseServiceClass implements CourseService {
         courseParticipants.forEach(x -> {System.out.println(x.GetFirstName());});
         if (!courseParticipants.contains(student)){System.out.println("Student not in course"); return;}
         course.RemoveFromParticipants(student);
+        //Save updated information to file
         try{
             DemoApplication.fileService.SaveCourseData();
         } catch (IOException err){
-            System.out.println("IOException I guess");
             err.printStackTrace();
         }
     }
